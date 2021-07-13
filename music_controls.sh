@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "$1"
+
 case $1 in
 	quit) echo ' { "command": ["quit"] } ' | socat - /tmp/mpvsocket &>/dev/null ;;
 	next) echo ' { "command": ["playlist-next"] } ' | socat - /tmp/mpvsocket &>/dev/null ;;

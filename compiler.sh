@@ -40,12 +40,22 @@ rust() {
 	esac
 }
 
+html() {
+	brave $1
+}
+
+js() {
+	$1
+}
+
 EXT=${1##*.}
 
 case $EXT in
-	c) c $1 $2 $EXT;;
-	cpp) cpp $1 $2 $EXT;;
-	tex) latex $1 $2 $EXT;;
-	py) python $1 $2 $EXT;;
-	rs) rust $1 $2 $EXT;;
+	c) c $1 ;;
+	cpp) cpp $1 ;;
+	tex) latex $1 ;;
+	py) python $1 ;;
+	rs) rust $1 ;;
+	js) js $1 ;;
+	html) html $1 ;;
 esac

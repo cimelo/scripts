@@ -15,7 +15,7 @@ random() {
 	STR=`
 	for f in $WF/*
 	do
-		find "$f" -name *.jpg -o -name *.png | shuf | head -n 20
+		find "$f" -regex '.*[jpg\|png]' | shuf | head -n 30
 	done `
 }
 
@@ -25,4 +25,4 @@ case $CW in
 	CUSTOM) custom ;;
 esac
 
-echo "$STR" | sxiv -fts f -
+echo "$STR" | sxiv -fats f -

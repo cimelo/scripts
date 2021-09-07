@@ -41,7 +41,7 @@ rust() {
 }
 
 html() {
-	$BROWSER $1
+	setsid $BROWSER $1
 }
 
 js() {

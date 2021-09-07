@@ -41,7 +41,7 @@ rust() {
 }
 
 html() {
-	brave $1
+	$BROWSER $1
 }
 
 js() {

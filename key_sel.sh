@@ -9,7 +9,7 @@ cpb() {
 }
 
 case $O in
-	nt) cpb $C/sxhkdrc_nt ;;
+	nt) cpb $C/sxhkdrc ;;
 	rf) cpb $C/sxhkdrc_rf ;;
 esac
 

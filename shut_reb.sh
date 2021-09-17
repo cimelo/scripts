@@ -6,9 +6,10 @@ svs() {
 }
 
 pgrep transmission && echo "Transmission is Running!" | dmenu
-CMD=` printf "Shutdown\nReboot" | dmenu `
+CMD=` printf "Sleep\nShutdown\nReboot" | dmenu `
 
 case $CMD in
 	Shutdown) svs && shutdown now;;
 	Reboot) svs && reboot;;
+	Sleep) slock $(echo mem | sudo tee /sys/power/state) ;;
 esac

@@ -5,7 +5,6 @@ F=$(fzf -q "$3")
 
 cdf() {
 	TYPE=$( stat $F | awk '/Size/ {print $8}' )
-	echo $TYPE
 	if [ $TYPE = "directory" ]; then
 		cd $F
 	else

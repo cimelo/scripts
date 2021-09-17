@@ -1,9 +1,20 @@
 #!/bin/sh
 
 cd $1
-F=` fzf -q "$3" `
+F=$(fzf -q "$3")
+
+cdf() {
+	TYPE=$( stat $F | awk '/Size/ {print $8}' )
+	echo $TYPE
+	if [ $TYPE = "directory" ]; then
+		cd $F
+	else
+		cd $(dirname $F)
+	fi
+}
+
 case $2 in
-	d) cd $F ;;
+	d) cdf ;;
 	f) nvim $F ;;
 	l) ls $F ;;
 esac

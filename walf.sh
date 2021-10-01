@@ -6,7 +6,7 @@ custom() {
 	C=` ls -d $WF/* | dmenu -i -p "Wallpaper Folder: " -l 10 `
 	
 	case $C in
-		"${WF}/Anime") STR=` ls -d ${WF}/Anime/*/ | dmenu -i -p "Wallpaper Folder: "-i -l 30 `;;
+		"${WF}/Anime") STR=$(ls -d ${WF}/Anime/*/ | dmenu -i -p "Wallpaper Folder: "-i -l 30);;
 		*) STR="$C";;
 	esac
 }

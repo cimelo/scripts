@@ -5,7 +5,6 @@ svs() {
 	xbacklight 1> $BL
 }
 
-pgrep transmission && echo "Transmission is Running!" | dmenu
 CMD=` printf "Sleep\nShutdown\nReboot" | dmenu `
 
 case $CMD in

@@ -43,13 +43,17 @@ dual() {
 	xrandr --output LVDS1 --auto --primary && xrandr --output $1 --auto --right-of LVDS1
 }
 
+x() {
+	echo "$( xrandr | awk ' /\yconnected\y/ {print $1} ' | dmenu -i -p '$1' )"
+}
+
 custom() {
-	P=` xrandr | awk ' /\yconnected\y/ {print $1} ' | dmenu -i -p "Primary display: " `
-	R=` xrandr | awk ' /\yconnected\y/ {print $1} ' | dmenu	-i -p "Right display: " `
-	L=` xrandr | awk ' /\yconnected\y/ {print $1} ' | dmenu	-i -p "Left display: " `
-	[ -n P ] && xrandr --output $P --auto --primary || (lvds && exit 1) 
-	[ R != "NO" ] && xrandr --output $R --auto --right-of $P
-	[ L != "NO" ] && xrandr --output $L --auto --left-of $P
+	P=$(x "Primary display: ")
+	R=$(x "Right display: ")
+	L=$(x "Left display: ")
+	[ -n $P ] && xrandr --output $P --auto --primary || (lvds && exit 1) 
+	[ -n $R ] && xrandr --output $R --auto --right-of $P || (lvds && exit 1) 
+	[ -n $L ] && xrandr --output $L --auto --left-of $P || (lvds && exit 1) 
 }
 
 manual() {

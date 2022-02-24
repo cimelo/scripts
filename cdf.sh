@@ -1,7 +1,8 @@
 #!/bin/sh
 
+HIST=$HOME/.cache/history_fzf
 cd $1
-F=$(fzf -q "$3")
+F=$( cat $HIST | fzf --history-size=1000000 -e -q "$3" )
 
 cdf() {
 	TYPE=$( stat $F | awk '/Size/ {print $8}' )

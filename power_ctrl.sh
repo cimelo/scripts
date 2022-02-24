@@ -5,7 +5,7 @@ svs() {
 	xbacklight 1> $BL
 }
 
-CMD=` printf "Sleep\nShutdown\nReboot" | dmenu `
+CMD=` printf "Sleep\nShutdown\nReboot" | dmenu -i`
 
 case $CMD in
 	Shutdown) svs && shutdown now;;

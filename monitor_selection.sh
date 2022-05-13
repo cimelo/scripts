@@ -40,7 +40,7 @@ vga() {
 }
 
 dual() {
-	xrandr --output LVDS1 --auto --primary && xrandr --output $1 --auto --right-of LVDS1
+	xrandr --output LVDS1 --auto --primary && xrandr --output $1 --auto --left-of LVDS1
 }
 
 x() {

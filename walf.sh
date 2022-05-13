@@ -5,19 +5,14 @@ WF="$HOME/Pictures/Wallpapers"
 custom() {
 	C=` ls -d $WF/* | dmenu -i -p "Wallpaper Folder: " -l 10 `
 	
-	case $C in
-		"${WF}/Anime") STR=$(ls -d ${WF}/Anime/*/ | dmenu -i -p "Wallpaper Folder: "-i -l 30);;
-		*) STR="$C";;
-	esac
-
-	sxiv -fts f "$STR"
+	sxiv -fts f "$C"
 }
 
 random() {
 	STR=$(
 		for f in $WF/*
 		do
-			find "$f" -regex '.*[jpg\|png]' | shuf | head -n 60
+			find "$f" -regex '.*[jpg\|png]' | shuf | head -n 30
 		done
 	)
 

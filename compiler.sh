@@ -1,14 +1,13 @@
 #!/bin/sh
 
+# compilees the documents on cpl that includes biber archive, tex then generates the pdf archive with name $FN and runs the openned instance of tabbed with zathura in it 
 latex() {
 	CF="../cpl"
 	FN="${1%.*}"
 	
-	pdflatex -output-directory $CF $1 &&
-		biber --input-directory $CF --output-directory $CF $FN &&
-		pdflatex -output-directory $CF $1 &&
-		pdflatex -output-directory $CF $1 &&
-		[ -z ` pidof -x tabbed 2>/dev/null ` ] && setsid zat.sh $CF/main.pdf
+	pdflatex -shell-escape -output-directory $CF main.tex &&
+	pdflatex -shell-escape -output-directory $CF main.tex &&
+	pdflatex -shell-escape -output-directory $CF main.tex
 }
 
 c() {

@@ -15,13 +15,14 @@ copy() {
 }
 
 C=` printf "%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s"\
-	"FreeTube" "Anime" "Lbry" "YT" "History" "Link" "Fisioterapia" "Save" "Copy" | \
+	"FreeTube" "Anime" "Popcorn" "Whatsapp" "YT" "History" "Link" "Fisioterapia" "Save" "Copy" | \
 	dmenu -p "Video Source > " -i -l 30`
 
 case $C in
 	FreeTube) freetube ;;
 	Anime) ani.sh ;;
-	Lbry) lbry ;;
+	Popcorn) popcorntime ;;
+	Whatsapp) whatsapp-nativefier ;;
 	YT) st ytfzf -qtfl ;;
 	History) st ytfzf -Hfl ;; 
 	Link) mpv --no-terminal --fs ` xclip -selection c -o ` ;;
